@@ -3,24 +3,24 @@ package DSA.STACK;
 import java.util.Stack;
 
 class decode{ 
-    public static String decode(String str){
+    public static String decode(String s){
     Stack<Integer> integerstack = new Stack<>();
     Stack<Character> stringstack = new Stack<>(); 
     String temp = "", result = ""; 
-    for (int i = 0; i < str.length(); i++)
+    for (int i = 0; i < s.length(); i++)
     { 
         int count = 0; 
-        if (Character.isDigit(str.charAt(i)))
+        if (Character.isDigit(s.charAt(i)))
         { 
-            while (Character.isDigit(str.charAt(i)))
+            while (Character.isDigit(s.charAt(i)))
             { 
-                count = count * 10 + str.charAt(i) - '0'; 
+                count = count * 10 + s.charAt(i) - '0'; 
                 i++;
             }
             i--;
             integerstack.push(count);
         }
-        else if (str.charAt(i) == ']')
+        else if (s.charAt(i) == ']')
         { 
             temp = ""; 
             count = 0;
@@ -41,17 +41,17 @@ class decode{
             result = "";
         }
     }
-    else if (str.charAt(i) == '[')
+    else if (s.charAt(i) == '[')
     { 
-        if (Character.isDigit(str.charAt(i-1))) 
-        stringstack.push(str.charAt(i));
+        if (Character.isDigit(s.charAt(i-1))) 
+        stringstack.push(s.charAt(i));
         else
         { 
-            stringstack.push(str.charAt(i)); 
+            stringstack.push(s.charAt(i)); 
             integerstack.push(1);
         }
     }
-    else stringstack.push(str.charAt(i));
+    else stringstack.push(s.charAt(i));
     }
     while (!stringstack.isEmpty())
     { 
