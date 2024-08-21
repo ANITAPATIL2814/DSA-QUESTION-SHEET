@@ -1,6 +1,6 @@
 package DSA.BINARY_SEARCH_TREE;
 
-public class BST {
+public class search {
     static class Node{
         int data;
         Node left;
@@ -32,34 +32,30 @@ public class BST {
         System.out.print(root.data+" ");
         inorder(root.right);
     }
-    public static boolean search(Node root,int key){
+    public static void printRange(Node root,int k1,int k2){
         if(root==null){
-            return false;
+            return;
         }
-        if(root.data ==key){
-            return true;
+        if(root.data >=k1 && root.data<=k2){
+            printRange(root.left, k1, k2);
+            System.out.print(root.data+" ");
+            printRange(root.right, k1, k2);
         }
-        if(root.data >key){
-            return search(root.left, key);
+        else if(root.data<k1){
+            printRange(root.left, k1, k2);
         }
         else{
-            return search(root.right, key);
+            printRange(root.right, k1, k2);
         }
     }
-  
     public static void main(String[] args) {
-        int values[]={5,1,3,4,2,7};
+        int values[]={8,5,3,1,4,6,10,11,14};
         Node root=null;
         for(int i=0;i<values.length;i++){
             root=insert(root, values[i]);
         }
         inorder(root);
         System.out.println();
-        if(search(root, 1)){
-            System.out.println("found");
-        }else{
-            System.out.println("not found");
-        }
-        
+        printRange(root, 5, 12);
     }
 }
