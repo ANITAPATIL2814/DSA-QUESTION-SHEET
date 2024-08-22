@@ -1,5 +1,7 @@
 package DSA.BINARY_SEARCH_TREE;
 
+import java.util.ArrayList;
+
 public class search {
     static class Node{
         int data;
@@ -48,6 +50,25 @@ public class search {
             printRange(root.right, k1, k2);
         }
     }
+
+    public static void printrootleaf(Node root,ArrayList<Integer>path){
+        if(root == null){
+            return;
+        }
+        path.add(root.data);
+        if(root.left ==null && root.right==null){
+            printPath(path);
+        }
+        printrootleaf(root.left, path);
+        printrootleaf(root.right, path);
+        path.remove(path.size()-1);
+    }
+    private static void printPath(ArrayList<Integer> path) {
+        for(int i=0;i<path.size();i++){
+            System.out.print(path.get(i)+" -> ");
+        }    
+        System.out.println("Null");
+    }
     public static void main(String[] args) {
         int values[]={8,5,3,1,4,6,10,11,14};
         Node root=null;
@@ -56,6 +77,7 @@ public class search {
         }
         inorder(root);
         System.out.println();
-        printRange(root, 5, 12);
+        // printRange(root, 5, 12);
+        printrootleaf(root, new ArrayList<>());
     }
 }
