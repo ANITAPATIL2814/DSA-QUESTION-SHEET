@@ -4,7 +4,6 @@ public class print_prime_range {
             if(n%i==0){
                 return false;
             }
-           
         }
         return true;
     }
