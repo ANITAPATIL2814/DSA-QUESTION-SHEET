@@ -25,7 +25,7 @@ public class pq_objects {
         pq.add(new Students("utsav",7));
         pq.add(new Students("diapk",9));
         while (!pq.isEmpty()) {
-            System.out.println(pq.peek());//O(1)
+            System.out.println(pq.peek().name+" "+pq.peek().rank);//O(1)
             pq.remove();//O(logn)
         }
     }
